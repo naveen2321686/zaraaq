@@ -20,5 +20,6 @@ export default function TopProducts({ className }: Props) {
         ))}
       </ul>
     </div>
+    
   );
 }

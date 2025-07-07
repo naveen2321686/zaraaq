@@ -1,5 +1,4 @@
 'use client';
-
 export default function ChartSection() {
   return (
     <div className="p-4 bg-white rounded-xl shadow w-full">

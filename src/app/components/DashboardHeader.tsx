@@ -2,7 +2,7 @@ import { FaSearch, FaBell, FaUserCircle } from 'react-icons/fa';
 
 export default function DashboardHeader() {
   return (
-    <div className="flex justify-between items-center bg-white p-4 rounded-xl shadow">
+    <div className="flex justify-between items-center bg-white p-4 rounded-xl shadow ">
       <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
       <div className="flex items-center gap-4">
         <div className="relative">

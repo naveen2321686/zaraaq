@@ -4,7 +4,9 @@ import DashboardPage from '../dashboard/page'
 
 const page = () => {
   return (
-    <div><LoginPage/></div>
+    <div><LoginPage/>  
+    
+    </div>
   )
 }
 
