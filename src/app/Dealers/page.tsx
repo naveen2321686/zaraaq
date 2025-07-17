@@ -18,12 +18,20 @@ const getRandomContact = () => {
 };
 
 
+type Dealer = {
+  id: number;
+  name: string;
+  location: string;
+  contact: string;
+  status: string;
+};
+
 const DealersPage = () => {
-  const [dealers, setDealers] = useState<any[]>([]);
+  const [dealers, setDealers] = useState<Dealer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showAdd, setShowAdd] = useState(false);
-  const [showEdit, setShowEdit] = useState<{ open: boolean; dealer?: any }>({ open: false });
+  const [showEdit, setShowEdit] = useState<{ open: boolean; dealer?: Dealer }>({ open: false });
 
   // Form state
   const [form, setForm] = useState({ name: '', location: '', contact: '', status: 'Active' });
@@ -31,7 +39,22 @@ const DealersPage = () => {
   useEffect(() => {
     axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(res => {
-        const mapped = res.data.slice(0, 10).map((item: any) => ({
+        interface ApiPost {
+          id: number;
+          title: string;
+          body: string;
+          userId: number;
+        }
+
+        interface MappedDealer {
+          id: number;
+          name: string;
+          location: string;
+          contact: string;
+          status: string;
+        }
+
+        const mapped: MappedDealer[] = (res.data as ApiPost[]).slice(0, 10).map((item: ApiPost): MappedDealer => ({
           id: item.id,
           name: item.title,
           location: getRandomLocation(),
@@ -59,7 +82,15 @@ const DealersPage = () => {
   };
 
   // Edit Dealer
-  const handleEdit = (dealer: any) => {
+  interface HandleEditDealer {
+    id: number;
+    name: string;
+    location: string;
+    contact: string;
+    status: string;
+  }
+
+  const handleEdit = (dealer: HandleEditDealer) => {
     setShowEdit({ open: true, dealer });
     setForm({
       name: dealer.name,
@@ -69,7 +100,7 @@ const DealersPage = () => {
     });
   };
   const handleUpdate = () => {
-    setDealers(dealers.map(d => d.id === showEdit.dealer.id ? { ...d, ...form } : d));
+    setDealers(dealers.map(d => d.id === showEdit.dealer?.id ? { ...d, ...form } : d));
     setShowEdit({ open: false });
     setForm({ name: '', location: '', contact: '', status: 'Active' });
   };

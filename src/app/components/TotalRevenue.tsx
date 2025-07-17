@@ -66,9 +66,9 @@ const options = {
       grid: { display: false },
       ticks: {
         color: "#23235b",
-        font: { size: 12, weight: 600 }, // smaller font
-        callback: function(value: any) {
-          return data.labels[value] || value;
+        // smaller font
+        callback: function(value: string | number, index: number) {
+          return data.labels[typeof value === "number" ? value : Number(value)] || value;
         },
         maxRotation: 0,
         minRotation: 0,
@@ -82,7 +82,7 @@ const options = {
         color: "#23235b",
         font: { size: 12, weight: 600 }, // smaller font
         stepSize: 5000,
-        callback: function(this: any, value: string | number) {
+        callback: function(value: string | number) {
           if (typeof value === "number") {
             return value === 0 ? '0k' : `${value / 1000}k`;
           }
