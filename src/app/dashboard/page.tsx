@@ -21,8 +21,9 @@ export default function DashboardPage() {
           <ChartSection />
         </div>
       </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
-        <TotalRevenue className="col-span-2" />
+        <TotalRevenue className ="col-span-2" />
         <BalanceCard />
         <TotalSalesPie />
         <TopProducts className="col-span-2" />

@@ -15,6 +15,8 @@ export default function ChartSection() {
         <button className="text-gray-500">6M</button>
         <button className="text-gray-500">1Y</button>
       </div>
+
+    
       {/* Placeholder chart */}
       <div className="h-40 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center text-purple-700 font-semibold">
         Chart Placeholder

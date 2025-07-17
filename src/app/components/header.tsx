@@ -68,6 +68,8 @@ import Image from 'next/image';
 import headerLogo from "../images/logoImage.png";
 import { useRouter } from 'next/navigation';
 
+import naveenphoto from "../images/naveenphotos.jpg";
+
 const Header: React.FC = () => {
   const router = useRouter();
 
@@ -96,6 +98,7 @@ const Header: React.FC = () => {
           />
         </div>
 
+
         {/* Bell Icon */}
         <div className="bg-white p-2 rounded-full">
           <FaBell className="text-gray-700" />
@@ -103,8 +106,8 @@ const Header: React.FC = () => {
 
         {/* Profile */}
         <div className="flex items-center gap-2 text-white">
-          <Image
-            src="/user.jpg"
+          <Image 
+            src={naveenphoto}
             alt="Profile"
             width={32}
             height={32}
