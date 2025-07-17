@@ -36,7 +36,7 @@ export default function SalesSummary({ className }: Props) {
     <div className={`p-4 bg-white rounded-xl h-[255] shadow w-full ${className}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-gray-500 font-bold">Today's Sales</h2>
+          <h2 className="text-gray-500 font-bold">Today&apos;s Sales</h2>
           <p className="text-sm text-gray-500">Sales Summary</p>
         </div>
         <button className="px-4 py-1 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">

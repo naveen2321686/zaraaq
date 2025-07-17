@@ -22,12 +22,26 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
-        <TotalRevenue className ="col-span-2" />
-        <BalanceCard />
-        <TotalSalesPie />
-        <TopProducts className="col-span-2" />
-        <VisitorInsights />
+      {/* Main dashboard grid for cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mt-4">
+        {/* Total Revenue (3 columns) and Balance Card (2 columns) side by side */}
+        <div className="md:col-span-2 lg:col-span-3 flex flex-col gap-6">
+          <TotalRevenue />
+        </div>
+        <div className="md:col-span-1 lg:col-span-2 flex flex-col gap-2">
+          <BalanceCard />
+        </div>
+        {/* Total Sales Pie (1 column) */}
+        <div className="md:col-span-1 lg:col-span-1">
+          <TotalSalesPie />
+        </div>
+        {/* Top Products (3 columns) and Visitor Insights (2 columns) side by side below */}
+        <div className="md:col-span-2 lg:col-span-3">
+          <TopProducts />
+        </div>
+        <div className="md:col-span-1 lg:col-span-2">
+          <VisitorInsights />
+        </div>
       </div>
     </div>
   );

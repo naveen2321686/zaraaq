@@ -19,7 +19,7 @@ const navItems = [
   { label: 'Customer management', icon: <FaBuilding />, href: '/customers' },
   { label: 'Report', icon: <FaChartLine />, href: '/report' },
   { label: 'Grievance', icon: <FaCommentDots />, href: '/grievance' },
-  { label: 'Sign Out', icon: <FaSignOutAlt />, href: '/logout' },
+  { label: 'Sign Out', icon: <FaSignOutAlt />, href: '/Signout' },
 ];
 
 const Sidebar = () => {

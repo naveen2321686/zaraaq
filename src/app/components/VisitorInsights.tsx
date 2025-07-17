@@ -96,6 +96,8 @@ const VisitorInsights = () => {
       <h3 className="text-indigo-950 font-bold text-[20px] mb-4">Visitor Insights</h3>
       <Line options={options} data={data} height={220} />
     </div>
+
+
   );
 };
 

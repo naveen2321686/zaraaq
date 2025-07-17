@@ -24,53 +24,63 @@ const data = {
       data: [12000, 15000, 8000, 14000, 11000, 17000, 21000],
       backgroundColor: "#38b6ff", // lighter blue
       borderRadius: 4,
-      barThickness: 14,
+      barThickness: 8, // thinner bars
     },
     {
       label: "Offline Sales",
       data: [11000, 9000, 23000, 7000, 10000, 14000, 9000],
       backgroundColor: "#1de9b6", // lighter green
       borderRadius: 4,
-      barThickness: 14,
+      barThickness: 8, // thinner bars
     },
   ],
 };
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       display: true,
       position: "bottom" as const,
       labels: {
         color: "#23235b",
-        font: { size: 15, weight: "600" as const },
+        font: { size: 13, weight: 600 }, // smaller font
         usePointStyle: true,
         pointStyle: "rectRounded" as const,
-        padding: 24,
+        padding: 20,
       },
     },
     title: { display: false },
+  },
+  layout: {
+    padding: {
+      left: 24,
+      right: 24,
+      top: 16,
+      bottom: 16,
+    },
   },
   scales: {
     x: {
       grid: { display: false },
       ticks: {
         color: "#23235b",
-        font: { size: 13, weight: "500" as const },
+        font: { size: 12, weight: 600 }, // smaller font
         callback: function(value: any) {
           return data.labels[value] || value;
         },
-        maxRotation: 35,
-        minRotation: 35,
+        maxRotation: 0,
+        minRotation: 0,
         autoSkip: false,
-      }, 
+        padding: 6,
+      },
     },
     y: {
       grid: { color: "#f0f0f0" },
       ticks: {
         color: "#23235b",
-        font: { size: 13, weight: "500" as const },
+        font: { size: 12, weight: 600 }, // smaller font
         stepSize: 5000,
         callback: function(this: any, value: string | number) {
           if (typeof value === "number") {
@@ -78,6 +88,7 @@ const options = {
           }
           return value;
         },
+        padding: 6,
       },
       min: 0,
       max: 25000,
@@ -86,10 +97,13 @@ const options = {
 };
 
 const TotalRevenue: React.FC<TotalRevenueProps> = ({ className }) => (
-  <div className={`bg-white rounded-2xl p-6 shadow min-w-[350px] max-w-[480px] ${className || ""}`}>
-    <h3 className="text-[#23235b] font-bold text-[24px] mb-2">Total Revenue</h3>
-    <div className="h-[260px] flex items-end">
-      <Bar data={data} options={options} height={220} />
+  <div
+    className={`bg-white rounded-2xl p-4 shadow w-full max-w-xl ${className || ""}`}
+    style={{ minWidth: 0 }}
+  >
+    <h3 className="text-[#23235b] font-bold text-[20px] mb-2">Total Revenue</h3>
+    <div className="w-full" style={{ minHeight: 180, height: 220 }}>
+      <Bar data={data} options={options} />
     </div>
   </div>
 );

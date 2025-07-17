@@ -66,7 +66,7 @@ const TotalSalesPie = () => {
         </svg>
       </div>
       <div style={{ marginLeft: 8 }}>
-        {salesData.map((d, i) => (
+        {salesData.map((d) => (
           <div key={d.label} style={{ display: "flex", alignItems: "center", marginBottom: 6 }}>
             <span style={{
               display: "inline-block",

@@ -63,7 +63,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const router = useRouter();
 
   useEffect(() => {
-    const loginData = localStorage.getItem("login");
+    const loginData = sessionStorage.getItem("login");
     const isUserLoggedIn = !!loginData;
     setIsLogin(isUserLoggedIn);
     setChecked(true);
@@ -99,6 +99,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <main className="ml-64 flex-1 bg-gray-50 p-4 overflow-y-auto h-[calc(100vh-4rem)]">
           {children}
         </main>
+
+        
       </div>
     </div>
   );

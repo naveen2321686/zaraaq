@@ -4,7 +4,7 @@ const BalanceCard = () => {
   return (
     <div style={{
       background: "#fff",
-      borderRadius: 16,
+      borderRadius: 26,
       padding: 20,
       boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
       minWidth: 280,
@@ -14,7 +14,8 @@ const BalanceCard = () => {
     }}>
       <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 8 }}>Balance</div>
       <div style={{ display: "flex", alignItems: "center", marginBottom: 18 }}>
-        <div style={{
+        <div
+        style={{
           background: "#8f4fff",
           color: "#fff",
           borderRadius: 10,
