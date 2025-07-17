@@ -67,7 +67,7 @@ const options = {
       ticks: {
         color: "#23235b",
         // smaller font
-        callback: function(value: string | number, index: number) {
+        callback: function(value: string | number) {
           return data.labels[typeof value === "number" ? value : Number(value)] || value;
         },
         maxRotation: 0,
