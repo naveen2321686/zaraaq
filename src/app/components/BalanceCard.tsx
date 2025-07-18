@@ -4,11 +4,11 @@ const BalanceCard = () => {
   return (
     <div style={{
       background: "#fff",
-      borderRadius: 26,
+      borderRadius: 15,
       padding: 20,
       boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-      minWidth: 280,
-      maxWidth: 340,
+      minWidth: 300,
+      maxWidth: 400,
       fontFamily: 'Inter, sans-serif',
       color: "#23235b"
     }}>
@@ -42,7 +42,7 @@ const BalanceCard = () => {
       <div style={{
         background: "#232323",
         color: "#fff",
-        borderRadius: 10,
+        borderRadius: 8,
         padding: "12px 20px",
         fontSize: 20,
         fontWeight: 700,

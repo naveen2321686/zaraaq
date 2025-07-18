@@ -98,11 +98,11 @@ const options = {
 
 const TotalRevenue: React.FC<TotalRevenueProps> = ({ className }) => (
   <div
-    className={`bg-white rounded-2xl p-4 shadow w-full max-w-xl ${className || ""}`}
+    className={`bg-white rounded-xl p-4 shadow w-full max-w-xl ${className || ""}`}
     style={{ minWidth: 0 }}
   >
     <h3 className="text-[#23235b] font-bold text-[20px] mb-2">Total Revenue</h3>
-    <div className="w-full" style={{ minHeight: 180, height: 220 }}>
+    <div className="w-full" style={{ minHeight: 270, height: 220 }}>
       <Bar data={data} options={options} />
     </div>
   </div>

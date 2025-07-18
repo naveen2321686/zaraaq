@@ -1,20 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
 const statusColors: Record<string, string> = {
   Active: 'text-green-600',
   Inactive: 'text-red-600',
-};
-
-const getRandomStatus = () => (Math.random() > 0.5 ? 'Active' : 'Inactive');
-const getRandomLocation = () => {
-  const locations = ['Chennai', 'Coimbatore', 'Madurai', 'Trichy', 'Salem'];
-  return locations[Math.floor(Math.random() * locations.length)];
-};
-const getRandomContact = () => {
-  return '9' + Math.floor(100000000 + Math.random() * 900000000).toString();
 };
 
 
@@ -27,48 +17,20 @@ type Dealer = {
 };
 
 const DealersPage = () => {
-  const [dealers, setDealers] = useState<Dealer[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [dealers, setDealers] = useState<Dealer[]>([
+    { id: 1, name: 'Dealer One', location: 'Chennai', contact: '9876543210', status: 'Active' },
+    { id: 2, name: 'Dealer Two', location: 'Coimbatore', contact: '9123456780', status: 'Inactive' },
+    { id: 3, name: 'Dealer Three', location: 'Madurai', contact: '9988776655', status: 'Active' },
+  ]);
+  const [loading] = useState(false);
+  const [error] = useState('');
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState<{ open: boolean; dealer?: Dealer }>({ open: false });
 
   // Form state
   const [form, setForm] = useState({ name: '', location: '', contact: '', status: 'Active' });
 
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(res => {
-        interface ApiPost {
-          id: number;
-          title: string;
-          body: string;
-          userId: number;
-        }
-
-        interface MappedDealer {
-          id: number;
-          name: string;
-          location: string;
-          contact: string;
-          status: string;
-        }
-
-        const mapped: MappedDealer[] = (res.data as ApiPost[]).slice(0, 10).map((item: ApiPost): MappedDealer => ({
-          id: item.id,
-          name: item.title,
-          location: getRandomLocation(),
-          contact: getRandomContact(),
-          status: getRandomStatus(),
-        }));
-        setDealers(mapped);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError('Failed to fetch dealers');
-        setLoading(false);
-      });
-  }, []);
+  // No API call, using local dummy data
 
   // Add Dealer
   const handleAdd = () => {

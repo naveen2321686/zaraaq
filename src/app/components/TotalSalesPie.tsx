@@ -46,7 +46,8 @@ const TotalSalesPie = () => {
       minWidth: 220,
       maxWidth: 300,
       fontFamily: 'Inter, sans-serif',
-      color: "#23235b"
+      color: "#23235b",
+      height: 340,
     }}>
       <div style={{ fontWeight: 600, fontSize: 15, marginBottom: 8 }}>Total Sales</div>
       <div style={{ display: "flex", alignItems: "center", marginBottom: 12 }}>

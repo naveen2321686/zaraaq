@@ -46,7 +46,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center w-screen h-screen">
       <div className="grid grid-cols-4 w-full h-full c">
         {/* Left - 25% */}
-        <div className="col-span-1 p-10 bg-white ">
+        <div className="col-span-1 p-10 bg-white">
           <div className="mb-6 text-center">
             <Image src={logoImage} alt="Logo" width={60} height={60} className="mx-auto mt-13"/>
             <h2 className="text-1xl font-semibold mt-3 text-black">Log in</h2>

@@ -33,7 +33,7 @@ export default function SalesSummary({ className }: Props) {
   ];
 
   return (
-    <div className={`p-4 bg-white rounded-xl h-[255] shadow w-full ${className}`}>
+    <div className={`p-4 bg-white rounded-xl h-[288] shadow w-full ${className}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-gray-500 font-bold">Today&apos;s Sales</h2>

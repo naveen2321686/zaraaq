@@ -22,7 +22,7 @@ const productData = [
 
 export default function TopProducts({ className }: Props) {
   return (
-    <div className={`bg-white p-6 rounded-xl shadow ${className || ''} min-w-[340px] max-w-[500px]`}>
+    <div className={`bg-white p-6 rounded-xl shadow ${className || ''} min-w-[340px] max-w-[900px] h-[100%]`}>
       <h2 className="text-indigo-950 font-bold text-[20px] mb-4">Top Products</h2>
       <div className="flex font-semibold text-gray-400 text-[13px] mb-2">
         <div className="w-8">#</div>

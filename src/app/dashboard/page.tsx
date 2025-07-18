@@ -1,4 +1,5 @@
 'use client';
+
 import BalanceCard from "../components/BalanceCard";
 import ChartSection from "../components/ChartSection";
 // import DashboardHeader from "../components/DashboardHeader";
@@ -7,6 +8,7 @@ import TopProducts from "../components/TopProducts";
 import TotalRevenue from "../components/TotalRevenue";
 import TotalSalesPie from "../components/TotalSalesPie";
 import VisitorInsights from "../components/VisitorInsights";
+import Todos from "../components/Todos";
 
 
 export default function DashboardPage() {
@@ -43,6 +45,8 @@ export default function DashboardPage() {
           <VisitorInsights />
         </div>
       </div>
+      {/* Todos API section */}
+      <Todos />
     </div>
   );
 }
