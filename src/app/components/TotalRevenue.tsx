@@ -1,5 +1,4 @@
-// 'use client' removed and replaced with the correct TotalRevenue component
-// import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,19 +11,22 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-interface TotalRevenueProps {
-  className?: string;
-}
-
-import React, { useEffect, useState } from "react";
-
 interface RevenueData {
+  year: number;
   month: string;
   onlineSales: number;
   offlineSales: number;
 }
 
-const defaultLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const defaultLabels = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
 const fetchRevenueData = async (): Promise<RevenueData[]> => {
   const res = await fetch("http://localhost:8089/revenue/monthly");
@@ -32,15 +34,16 @@ const fetchRevenueData = async (): Promise<RevenueData[]> => {
   return res.json();
 };
 
-
-const TotalRevenue: React.FC<TotalRevenueProps> = ({ className }) => {
+const TotalRevenue: React.FC = () => {
   const [labels, setLabels] = useState<string[]>(defaultLabels);
   const [onlineSales, setOnlineSales] = useState<number[]>([]);
   const [offlineSales, setOfflineSales] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const fetchData = () => {
+    setLoading(true);
+    setError(null);
     fetchRevenueData()
       .then((data) => {
         setLabels(data.map((d) => d.month));
@@ -49,101 +52,117 @@ const TotalRevenue: React.FC<TotalRevenueProps> = ({ className }) => {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
+        setError("Failed to fetch revenue data");
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  const chartData = {
+  const data = {
     labels,
     datasets: [
       {
         label: "Online Sales",
         data: onlineSales,
         backgroundColor: "#38b6ff",
-        borderRadius: 4,
-        barThickness: 8,
+        borderRadius: 2,
+        barThickness: 12,
+        barPercentage: 0.6,
+        categoryPercentage: 0.5,
       },
       {
         label: "Offline Sales",
         data: offlineSales,
         backgroundColor: "#1de9b6",
-        borderRadius: 4,
-        barThickness: 8,
+        borderRadius: 2,
+        barThickness: 12,
+        barPercentage: 0.6,
+        categoryPercentage: 0.5,
       },
     ],
   };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: true,
-        position: "bottom" as const,
-        labels: {
-          color: "#23235b",
-          font: { size: 13, weight: 600 },
-          usePointStyle: true,
-          pointStyle: "rectRounded" as const,
-          padding: 20,
-        },
-      },
-      title: { display: false },
-    },
-    layout: {
-      padding: {
-        left: 24,
-        right: 24,
-        top: 16,
-        bottom: 16,
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      position: "bottom" as const,
+      labels: {
+        color: "#23235b",
+        font: { size: 13, weight: 600 },
+        usePointStyle: true,
+        pointStyle: "rectRounded" as const,
+        padding: 20,
       },
     },
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: {
-          color: "#23235b",
-          callback: function(value: string | number, index: number) {
-            return labels[index] || value;
-          },
-          maxRotation: 0,
-          minRotation: 0,
-          autoSkip: false,
-          padding: 6,
-        },
-      },
-      y: {
-        grid: { color: "#f0f0f0" },
-        ticks: {
-          color: "#23235b",
-          font: { size: 12, weight: 600 },
-          stepSize: 5000,
-          callback: function(value: string | number) {
-            if (typeof value === "number") {
-              return value === 0 ? '0k' : `${value / 1000}k`;
-            }
-            return value;
-          },
-          padding: 6,
-        },
-        min: 0,
-        max: 25000,
+    title: { display: false },
+  },
+  layout: {
+    padding: {
+      left: 24,
+      right: 24,
+      top: 16,
+      bottom: 16,
+    },
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      ticks: {
+        color: "#23235b",
+        font: { size: 13, weight: 600 },
+        maxRotation: 0,
+        minRotation: 0,
+        autoSkip: false,
+        padding: 6,
       },
     },
-  };
+    y: {
+      grid: { color: "#f0f0f0" },
+      ticks: {
+        color: "#23235b",
+        font: { size: 12, weight: 600 },
+        stepSize: 5000,
+        callback: function(value: string | number) {
+          if (typeof value === "number") {
+            return value === 0 ? '0k' : `${value / 1000}k`;
+          }
+          return value;
+        },
+        padding: 6,
+      },
+      min: 0,
+      max: 25000,
+    },
+  },
+};
 
   return (
-    <div className={`bg-white rounded-xl p-4 shadow w-full max-w-xl ${className || ""}`} style={{ minWidth: 0 }}>
+    <div className="bg-white rounded-xl p-4 shadow w-full max-w-xl min-w-0">
       <h3 className="text-[#23235b] font-bold text-[20px] mb-2">Total Revenue</h3>
-      <div className="w-full" style={{ minHeight: 270, height: 220 }}>
-        {loading ? (
-          <div className="text-center text-gray-500 py-10">Loading revenue data...</div>
-        ) : error ? (
-          <div className="text-center text-red-500 py-10">{error}</div>
-        ) : (
-          <Bar data={chartData} options={options} />
-        )}
+      <div className="w-full min-h-[220px] h-[220px] md:h-[270px] flex items-center justify-center">
+        <div className="w-full h-full">
+          {loading ? (
+            <div className="text-center text-gray-500 py-10">Loading revenue data...</div>
+          ) : error ? (
+            <div className="text-center text-red-500 py-10 flex flex-col items-center gap-2">
+              {error}
+              <button
+                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                onClick={fetchData}
+              >
+                Retry
+              </button>
+            </div>
+          ) : (
+            <Bar data={data} options={options} />
+          )}
+        </div>
       </div>
     </div>
   );
