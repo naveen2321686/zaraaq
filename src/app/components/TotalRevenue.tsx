@@ -32,65 +32,6 @@ const fetchRevenueData = async (): Promise<RevenueData[]> => {
   return res.json();
 };
 
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: true,
-      position: "bottom" as const,
-      labels: {
-        color: "#23235b",
-        font: { size: 13, weight: 600 }, // smaller font
-        usePointStyle: true,
-        pointStyle: "rectRounded" as const,
-        padding: 20,
-      },
-    },
-    title: { display: false },
-  },
-  layout: {
-    padding: {
-      left: 24,
-      right: 24,
-      top: 16,
-      bottom: 16,
-    },
-  },
-  scales: {
-    x: {
-      grid: { display: false },
-      ticks: {
-        color: "#23235b",
-        // smaller font
-        callback: function(value: string | number) {
-          return defaultLabels[typeof value === "number" ? value : Number(value)] || value;
-        },
-        maxRotation: 0,
-        minRotation: 0,
-        autoSkip: false,
-        padding: 6,
-      },
-    },
-    y: {
-      grid: { color: "#f0f0f0" },
-      ticks: {
-        color: "#23235b",
-        font: { size: 12, weight: 600 }, // smaller font
-        stepSize: 5000,
-        callback: function(value: string | number) {
-          if (typeof value === "number") {
-            return value === 0 ? '0k' : `${value / 1000}k`;
-          }
-          return value;
-        },
-        padding: 6,
-      },
-      min: 0,
-      max: 25000,
-    },
-  },
-};
 
 const TotalRevenue: React.FC<TotalRevenueProps> = ({ className }) => {
   const [labels, setLabels] = useState<string[]>(defaultLabels);
