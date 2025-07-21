@@ -1,3 +1,25 @@
+
+
+const RevenueComponent = () => {
+  const fetchRevenueData = async () => {
+    try {
+      const response = await fetch("http://localhost:8089/revenue/monthly");
+      if (!response.ok) throw new Error("Failed to fetch revenue data");
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching revenue:", error);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={fetchRevenueData} className="bg-blue-500 text-white px-4 py-2 rounded">
+        Get Revenue
+      </button>
+    </div>
+  );
+};
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
@@ -28,10 +50,16 @@ const defaultLabels = [
   "Sunday",
 ];
 
-const fetchRevenueData = async (): Promise<RevenueData[]> => {
-  const res = await fetch("http://localhost:8089/revenue/monthly");
-  if (!res.ok) throw new Error("Failed to fetch revenue data");
-  return res.json();
+const ata = async () => {
+  try {
+    const response = await fetch("http://localhost:8089/revenue/monthly");
+    if (!response.ok) throw new Error("Failed to fetch revenue data");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const TotalRevenue: React.FC = () => {
@@ -44,19 +72,15 @@ const TotalRevenue: React.FC = () => {
   const fetchData = () => {
     setLoading(true);
     setError(null);
-    fetchRevenueData()
-      .then((data) => {
-        setLabels(data.map((d) => d.month));
-        setOnlineSales(data.map((d) => d.onlineSales));
-        setOfflineSales(data.map((d) => d.offlineSales));
+    ata()
+      .then((data: RevenueData[]) => {
+        setLabels(data.map((d: RevenueData) => d.month));
+        setOnlineSales(data.map((d: RevenueData) => d.onlineSales));
+        setOfflineSales(data.map((d: RevenueData) => d.offlineSales));
         setLoading(false);
       })
-      .catch((err: unknown) => {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Failed to fetch revenue data");
-        }
+      .catch(() => {
+        setError("Failed to fetch revenue data");
         setLoading(false);
       });
   };
@@ -173,3 +197,4 @@ const options = {
 };
 
 export default TotalRevenue;
+export { RevenueComponent };
