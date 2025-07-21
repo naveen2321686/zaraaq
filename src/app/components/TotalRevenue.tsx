@@ -51,8 +51,12 @@ const TotalRevenue: React.FC = () => {
         setOfflineSales(data.map((d) => d.offlineSales));
         setLoading(false);
       })
-      .catch((err) => {
-        setError("Failed to fetch revenue data");
+      .catch((err: unknown) => {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Failed to fetch revenue data");
+        }
         setLoading(false);
       });
   };
