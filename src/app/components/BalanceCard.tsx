@@ -15,7 +15,7 @@ const BalanceCard = () => {
       <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 8 }}>Balance</div>
       <div style={{ display: "flex", alignItems: "center", marginBottom: 18 }}>
         <div
-        style={{
+        style={{        
           background: "#8f4fff",
           color: "#fff",
           borderRadius: 10,
@@ -59,11 +59,11 @@ const BalanceCard = () => {
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
         <div>
-          <div style={{ color: "#bdbdbd", fontSize: 12 }}>Invested Value</div>
+          <div style={{ color: "neutral-900", fontSize: 12 }}>Invested Value</div>
           <div style={{ fontWeight: 600, fontSize: 15 }}>$29.34</div>
         </div>
         <div>
-          <div style={{ color: "#bdbdbd", fontSize: 12 }}>Current Value</div>
+          <div style={{ color: "neutral-900", fontSize: 12 }}>Current Value</div>
           <div style={{ fontWeight: 600, fontSize: 15 }}>$177.90</div>
         </div>
         <div>

@@ -40,7 +40,7 @@ const typeColors: Record<string, string> = {
 
 const NotificationPage = () => {
   return (
-    <div className="p-8 w-full h-full">
+    <div className="p-8 w-full h-half">
       <h2 className="text-2xl font-bold text-indigo-950 mb-6">Notifications</h2>
       <div className="space-y-4">
         {notifications.map((n) => (

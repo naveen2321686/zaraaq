@@ -83,6 +83,7 @@ const TotalSalesPie = () => {
         ))}
       </div>
     </div>
+
   );
 };
 

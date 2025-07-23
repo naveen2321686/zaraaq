@@ -22,14 +22,16 @@ const defaultLabels = [
   "Sunday",
 ];
 
+
 interface RevenueDay {
   day: string;
   onlineSales: number;
   offlineSales: number;
 }
 
+// Fetch revenue for a given month and year
 const fetchRevenue = async (month: number, year: number): Promise<RevenueDay[]> => {
-  const response = await fetch(`http://localhost:8089/revenue/monthly?month=${month}&year=${year}`);
+  const response = await fetch(`http://localhost:8086/revenue/monthly?month=${month}&year=${year}`);
   if (!response.ok) throw new Error("Failed to fetch revenue data");
   return response.json();
 };
