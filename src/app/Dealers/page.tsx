@@ -79,23 +79,23 @@ const DealersPage = () => {
         className="mb-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
         onClick={() => setShowAdd(true)}
       >
-        + Add Dealer
+        <span className="text-black">+ Add Dealer</span>
       </button>
       <div className="overflow-x-auto">
         {loading ? (
-          <div className="text-center py-8 text-gray-500">Loading...</div>
+          <div className="text-center py-8 text-black">Loading...</div>
         ) : error ? (
-          <div className="text-center py-8 text-red-500">{error}</div>
+          <div className="text-center py-8 text-black">{error}</div>
         ) : (
-          <table className="min-w-full bg-white rounded-lg shadow">
+          <table className="min-w-full bg-white rounded-lg shadow text-black">
             <thead>
               <tr className="bg-gray-100 text-black">
-                <th className="py-2 px-4 text-left">ID</th>
-                <th className="py-2 px-4 text-left">Name</th>
-                <th className="py-2 px-4 text-left">Location</th>
-                <th className="py-2 px-4 text-left">Contact</th>
-                <th className="py-2 px-4 text-left">Status</th>
-                <th className="py-2 px-4 text-left">Actions</th>
+                <th className="py-2 px-4 text-left text-black">ID</th>
+                <th className="py-2 px-4 text-left text-black">Name</th>
+                <th className="py-2 px-4 text-left text-black">Location</th>
+                <th className="py-2 px-4 text-left text-black">Contact</th>
+                <th className="py-2 px-4 text-left text-black">Status</th>
+                <th className="py-2 px-4 text-left text-black">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -127,37 +127,37 @@ const DealersPage = () => {
       {showAdd && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h3 className="text-lg font-bold mb-4">Add Dealer</h3>
+            <h3 className="text-lg font-bold mb-4 text-black">Add Dealer</h3>
             <div className="mb-2">
               <input
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black placeholder-black"
                 placeholder="Name"
                 value={form.name}
                 onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
               />
               <input
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black placeholder-black"
                 placeholder="Location"
                 value={form.location}
                 onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
               />
               <input
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black placeholder-black"
                 placeholder="Contact"
                 value={form.contact}
                 onChange={e => setForm(f => ({ ...f, contact: e.target.value }))}
               />
               <select
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black"
                 value={form.status}
                 onChange={e => setForm(f => ({ ...f, status: e.target.value }))}
               >
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+                <option value="Active" className="text-black">Active</option>
+                <option value="Inactive" className="text-black">Inactive</option>
               </select>
             </div>
             <div className="flex justify-end gap-2">
-              <button className="px-4 py-2 bg-gray-200 rounded" onClick={() => setShowAdd(false)}>Cancel</button>
+              <button className="px-4 py-2 bg-gray-200 rounded text-black" onClick={() => setShowAdd(false)}>Cancel</button>
               <button className="px-4 py-2 bg-indigo-600 text-white rounded" onClick={handleAdd}>Add</button>
             </div>
           </div>
@@ -168,37 +168,37 @@ const DealersPage = () => {
       {showEdit.open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h3 className="text-lg font-bold mb-4">Edit Dealer</h3>
+            <h3 className="text-lg font-bold mb-4 text-black">Edit Dealer</h3>
             <div className="mb-2">
               <input
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black placeholder-black"
                 placeholder="Name"
                 value={form.name}
                 onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
               />
               <input
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black placeholder-black"
                 placeholder="Location"
                 value={form.location}
                 onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
               />
               <input
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black placeholder-black"
                 placeholder="Contact"
                 value={form.contact}
                 onChange={e => setForm(f => ({ ...f, contact: e.target.value }))}
               />
               <select
-                className="w-full border rounded px-3 py-2 mb-2"
+                className="w-full border rounded px-3 py-2 mb-2 text-black"
                 value={form.status}
                 onChange={e => setForm(f => ({ ...f, status: e.target.value }))}
               >
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+                <option value="Active" className="text-black">Active</option>
+                <option value="Inactive" className="text-black">Inactive</option>
               </select>
             </div>
             <div className="flex justify-end gap-2">
-              <button className="px-4 py-2 bg-gray-200 rounded" onClick={() => setShowEdit({ open: false })}>Cancel</button>
+              <button className="px-4 py-2 bg-gray-200 rounded text-black" onClick={() => setShowEdit({ open: false })}>Cancel</button>
               <button className="px-4 py-2 bg-indigo-600 text-white rounded" onClick={handleUpdate}>Update</button>
             </div>
           </div>
