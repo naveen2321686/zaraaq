@@ -83,8 +83,7 @@ const TotalSalesPie = () => {
         ))}
       </div>
     </div>
-
-  );
+);
 };
 
 export default TotalSalesPie;

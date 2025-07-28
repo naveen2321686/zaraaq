@@ -53,6 +53,5 @@ export default function SalesSummary({ className }: Props) {
         ))}
       </div>
     </div>
-
   );
 }
