@@ -26,7 +26,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen w-64 bg-[#d3e6e6] p-3 shadow-lg mt:10">
+    <div className="min-h-screen w-64 bg-[#d3e6e6] p-3 shadow-lg mt-4">
       <ul className="space-y-4">
         {navItems.map((item) => {
           const isActive = pathname === item.href;

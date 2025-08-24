@@ -80,6 +80,8 @@ const TotalSalesPie = () => {
             <span style={{ color: d.color, fontWeight: 500, fontSize: 14, minWidth: 70 }}>{d.label}</span>
             <span style={{ marginLeft: "auto", fontWeight: 600, fontSize: 14, color: "#232323" }}>${d.value.toFixed(2)}</span>
           </div>
+
+          
         ))}
       </div>
     </div>

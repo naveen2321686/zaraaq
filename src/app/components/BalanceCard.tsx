@@ -75,6 +75,7 @@ const BalanceCard = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
